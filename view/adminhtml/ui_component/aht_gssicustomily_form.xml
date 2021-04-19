@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aht_gssicustomily_form.aht_gssicustomily_form_data_source</item>
+            <item name="deps" xsi:type="string">aht_gssicustomily_form.aht_gssicustomily_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Form Gssi Customily</item>
+
+        <!-- Bắt buộc phải có dòng này -->
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">aht_gssicustomily_form</item>
+        </item>
+
+        <!-- Bắt buộc phải có dòng này -->
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+
+    <!-- Khai báo nút bấm bên tay phải -->
+    <settings>
+        <buttons>
+            <button name="save" class="AHT\GssiCustomily\Block\Adminhtml\GssiCustomily\Edit\SaveButton"/>
+            <button name="reset" class="AHT\GssiCustomily\Block\Adminhtml\GssiCustomily\Edit\ResetButton"/>
+            <button name="back" class="AHT\GssiCustomily\Block\Adminhtml\GssiCustomily\Edit\BackButton"/>
+        </buttons>
+        <namespace>aht_gssicustomily_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>aht_gssicustomily_form.aht_gssicustomily_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="aht_gssicustomily_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">AHT\GssiCustomily\Model\GssiCustomily\DataProvider</argument>
+            <argument name="name" xsi:type="string">aht_gssicustomily_form_data_source</argument>
+            <!-- Khóa chính của bảng -->
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="gssicustomily/index/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="author_main">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string"/>
+            </item>
+        </argument>
+        <field name="sku" sortOrder="0">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Sku</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">gssicustomily</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="dataScope" xsi:type="string">sku</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="personalizationcode" sortOrder="1">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Personalization Code</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">gssicustomily</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="dataScope" xsi:type="string">personalizationcode</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="qty" sortOrder="2">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Qty</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">gssicustomily</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="dataScope" xsi:type="string">qty</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
+                        <item name="validate-number-range" xsi:type="boolean">true</item>
+                        <!-- <item name="stripped-min-length" xsi:type="boolean">true</item> -->      
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="price" sortOrder="3">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Price</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">gssicustomily</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="dataScope" xsi:type="string">price</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="AHT_GssiCustomily::gssicustomily" title="GssiCustomily" translate="GssiCustomily" module="AHT_GssiCustomily" sortOrder="50" resource="AHT_GssiCustomily::gssicustomily"/>
+		<add id="AHT_GssiCustomily::index" title="GssiCustomily" module="AHT_GssiCustomily" parent="AHT_GssiCustomily::gssicustomily" action="gssicustomily/index/" resource="AHT_GssiCustomily::index" sortOrder="55" />
+	</menu>
+</config>

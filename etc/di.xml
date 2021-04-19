@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Configure our grid collection -->
+    <virtualType name="AHT\GssiCustomily\Model\ResourceModel\GssiCustomily\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">aht_gssicustomily</argument>
+            <argument name="resourceModel" xsi:type="string">AHT\GssiCustomily\Model\ResourceModel\GssiCustomily</argument>
+        </arguments>
+    </virtualType>
+    <!-- register our data source: Dang ky nguon du lieu -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="aht_gssicustomily_listing_data_source" xsi:type="string">AHT\GssiCustomily\Model\ResourceModel\GssiCustomily\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- API -->
+    <preference for="AHT\GssiCustomily\Api\GssiCustomilyRepositoryInterface" type="AHT\GssiCustomily\Model\GssiCustomilyRepository" />
+    <preference for="AHT\GssiCustomily\Api\Data\GssiCustomilyInterface" type="AHT\GssiCustomily\Model\GssiCustomily"/>
+
+</config>
