@@ -47,7 +47,7 @@ class GssiCustomilyRepository implements GssiCustomilyRepositoryInterface
      */
     private $collectionProcessor;
 
-    private $_sku;
+    private $_price;
 
     private $_collection;
 
@@ -172,7 +172,7 @@ class GssiCustomilyRepository implements GssiCustomilyRepositoryInterface
         return $price;
     }
 
-    public function getPriceSkuPersonalizationCodeQty(array $array)
+    /*public function getPriceSkuPersonalizationCodeQty(array $array)
     {
         $this->_price = $array;
         $collection = $this->postCollectionFactory->create();
@@ -186,11 +186,8 @@ class GssiCustomilyRepository implements GssiCustomilyRepositoryInterface
         foreach ($collection as $key => $value) {
             $price = $value->getPrice();
         }
-        echo "<pre>";
-        var_dump( $price = $value->getPrice());
-        die;
         return $price;
-    }
+    }*/
 
     public function toFilterLike(String $field)
     {

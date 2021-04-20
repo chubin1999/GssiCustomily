@@ -98,6 +98,7 @@
                         <item name="required-entry" xsi:type="boolean">true</item>
                         <item name="validate-number" xsi:type="boolean">true</item>
                         <item name="validate-number-range" xsi:type="boolean">true</item>
+                        <item name="validate-per-page-value" xsi:type="boolean">1</item>
                         <!-- <item name="stripped-min-length" xsi:type="boolean">true</item> -->      
                     </item>
                 </item>
