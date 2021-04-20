@@ -53,14 +53,14 @@ interface GssiCustomilyInterface
     /**
      * Get GssiCustomily qty
      *
-     * @return int|null
+     * @return string|null
      */
     public function getQty();
 
     /**
      * Set GssiCustomily qty
      *
-     * @param int $qty
+     * @param string $qty
      * @return @this
      */
     public function setQty($qty);

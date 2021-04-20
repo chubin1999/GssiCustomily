@@ -19,14 +19,20 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
-    <route url="/V1/GssiCustomilyPriceBySku/:sku" method="GET">
-        <service class="AHT\GssiCustomily\Api\GssiCustomilyRepositoryInterface" method="getPriceBySku"/>
+    <route url="/V1/GssiCustomilyPrice" method="GET">
+        <service class="AHT\GssiCustomily\Api\GssiCustomilyRepositoryInterface" method="getPriceAll"/>
         <resources>
             <resource ref="anonymous"/>
         </resources>
     </route>
-     <route url="/V1/GssiCustomilyPrice/:price" method="GET">
-        <service class="AHT\GssiCustomily\Api\GssiCustomilyRepositoryInterface" method="getPrice"/>
+    <route url="/V1/GssiCustomilyPriceId/:id" method="GET">
+        <service class="AHT\GssiCustomily\Api\GssiCustomilyRepositoryInterface" method="getPriceId"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/GssiCustomilyPriceSku/:sku" method="GET">
+        <service class="AHT\GssiCustomily\Api\GssiCustomilyRepositoryInterface" method="getPriceSku"/>
         <resources>
             <resource ref="anonymous"/>
         </resources>

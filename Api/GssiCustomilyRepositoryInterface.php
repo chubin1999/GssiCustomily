@@ -19,10 +19,33 @@ interface GssiCustomilyRepositoryInterface
      */
     public function getList();
 
+     /**
+     * Get store list by search criteria
+     *
+     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+     * @return \AHT\GssiCustomily\Api\Data\StoreSearchResultsInterface
+     */
+    public function getPriceBySearchCriteria(SearchCriteriaInterface $searchCriteria);
+
     /**
-     * Get object by sku
+     * Get all Price
      *
      * @return \AHT\GssiCustomily\Api\Data\GssiCustomilyInterface
      */
-    public function getPriceBySku($sku);
+    public function getPriceAll();
+
+    /**
+     * Get Price by Id
+     *
+     * @return \AHT\GssiCustomily\Api\Data\GssiCustomilyInterface
+     */
+    public function getPriceId(String $id);
+
+    /**
+     * Get Price by Sku
+     *
+     * @return \AHT\GssiCustomily\Api\Data\GssiCustomilyInterface
+     */
+    public function getPriceSku(String $sku);
+
 }
