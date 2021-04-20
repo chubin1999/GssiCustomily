@@ -47,6 +47,10 @@ class GssiCustomilyRepository implements GssiCustomilyRepositoryInterface
      */
     private $collectionProcessor;
 
+    private $_sku;
+
+    private $_collection;
+
     public function __construct(
         ResourcePost $resource,
         GssiCustomilyFactory $postFactory,
@@ -56,8 +60,6 @@ class GssiCustomilyRepository implements GssiCustomilyRepositoryInterface
         $this->resource = $resource;
         $this->postFactory = $postFactory;
         $this->postCollectionFactory = $postCollectionFactory;
-        // $this->searchResultsFactory = $searchResultsFactory;
-        // $this->collectionProcessor = $collectionProcessor ?: $this->getCollectionProcessor();
     }
 
     /**
@@ -71,9 +73,6 @@ class GssiCustomilyRepository implements GssiCustomilyRepositoryInterface
         $postId = intval($id);
         $Post = $this->postFactory->create();
         $Post->load($postId);
-        /*echo "<pre>";
-        var_dump($Post->getData());
-        die();*/
         if (!$Post->getId()) {
             throw new NoSuchEntityException(__('The CMS Post with the "%1" ID doesn\'t exist.', $postId));
         }
@@ -89,19 +88,6 @@ class GssiCustomilyRepository implements GssiCustomilyRepositoryInterface
     public function getList()
     {
         $collection = $this->postCollectionFactory->create();
-        /*$a = get_class_methods($collection);
-        echo "<pre>";
-        print_r($a->getFirstItem()->getData());
-        die();*/
-        /*foreach ($collection as $key => $value) {
-            $value->getData();
-            echo "<pre>";
-            print_r($value->getPrice());
-
-        }
-        die();*/
-        /*var_dump($collection->getData());
-        die('abc');*/
         return $collection->getData();
     }
 
@@ -134,32 +120,12 @@ class GssiCustomilyRepository implements GssiCustomilyRepositoryInterface
      * @return \AHT\GssiCustomily\Model\ResourceModel\GssiCustomily
      */
     public function getPriceAll()
-    {
-        /*$postPrice = $price;
-        $Post = $this->PostFactory->create();
-        $Post->load($postPrice);
-        if (!$Post->getId()) {
-            throw new NoSuchEntityException(__('The CMS Post with the "%1" ID doesn\'t exist.', $postPrice));
-        }
-        $result = $Post;
-        return $result;*/
-
-        /*$postPrice = $price;*/
-        
+    {     
         $collection = $this->PostCollectionFactory->create();
         /*$a = $collection->getPrice();*/
         foreach ($collection as $key => $value) {
-            /*$a = */$value->getPrice();
-           /* echo "<pre>";
-            print_r($a);*/
-           /* return $value->getPrice();*/
+            $value->getPrice();
         }
-        /*die();*/
-       /* echo "<pre>";
-        print_r($a);
-        echo "</pre>";
-        die();*/
-
         return $value->getPrice();
     }
 
@@ -170,53 +136,67 @@ class GssiCustomilyRepository implements GssiCustomilyRepositoryInterface
      * @return \AHT\GssiCustomily\Api\Data\GssiCustomilyInterface
      */
     public function getPriceId($id)
-    {
-        /*1$postSku = $sku;*/
-        /*$Post = $this->PostFactory->create();
-        $Post->load($postSku);*/
-
-        /*2$collection = $this->PostCollectionFactory->create();
-        foreach ($collection as $key => $value) {
-            $value->getPrice($postSku);
-            echo "<pre>";
-            print_r($value->getPrice($postSku));
-        }
-        die();
-        $a = $value->getPrice($postSku);*/
-        /*if (!$collection->getPrice()) {
-            throw new NoSuchEntityException(__('The CMS Post with the "%1" ID doesn\'t exist.', $postSku));
-        }*/
-        /* $result = $a;*/
-        /*3return $a;*/
-
-        /*$postId = $sku;
-        $Post = $this->PostFactory->create();
-        $Post->load($postId);
-        echo "<pre>";
-        var_dump($Post->getData());
-        die();
-        if (!$Post->getId()) {
-            throw new NoSuchEntityException(__('The CMS Post with the "%1" ID doesn\'t exist.', $postId));
-        }
-        $result = $Post;
-        return $result;*/
-        
+    {        
         $product = $this->postFactory->create();
         $productPriceById = $product->load($id)->getPrice();
         return $productPriceById;
     }
 
-     /**
-     * Get Price by Sku
-     *
-     * @param [type] $sku
-     * @return \AHT\GssiCustomily\Api\Data\GssiCustomilyInterface
-     */
-    public function getPriceSku($sku)
+    public function getPriceSku(array $sku)
     {
-        die('arsdfghjkl');
-        $product = $this->postFactory->create();
-        $productPriceById = $product->loadByAttribute('sku', $sku)->getPrice();
-        return $productPriceById;
+        $this->_price = $sku;
+        $collection = $this->postCollectionFactory->create();
+
+        $this->_collection = $collection;
+
+        $this->toFilterLike('sku');
+
+        foreach ($collection as $key => $value) {
+            $price = $value->getPrice();
+        }
+        return $price;
     }
+
+    public function getPricePersonalizationCode(array $code)
+    {
+        $this->_price = $code;
+        $collection = $this->postCollectionFactory->create();
+
+        $this->_collection = $collection;
+
+        $this->toFilterLike('personalizationcode');
+
+        foreach ($collection as $key => $value) {
+            $price = $value->getPrice();
+        }
+        return $price;
+    }
+
+    public function getPriceSkuPersonalizationCodeQty(array $array)
+    {
+        $this->_price = $array;
+        $collection = $this->postCollectionFactory->create();
+
+        $this->_collection = $collection;
+
+        $this->toFilterLike('sku');
+        $this->toFilterLike('personalizationcode');
+        $this->toFilterLike('qty');
+
+        foreach ($collection as $key => $value) {
+            $price = $value->getPrice();
+        }
+        echo "<pre>";
+        var_dump( $price = $value->getPrice());
+        die;
+        return $price;
+    }
+
+    public function toFilterLike(String $field)
+    {
+        if (isset($this->_price[$field])) {
+            $this->_collection->addFieldToFilter($field, ['like' => '%' . $this->_price[$field] . '%']);
+        }
+    }
+
 }

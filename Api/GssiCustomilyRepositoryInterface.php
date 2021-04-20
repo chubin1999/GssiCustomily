@@ -43,9 +43,16 @@ interface GssiCustomilyRepositoryInterface
 
     /**
      * Get Price by Sku
-     *
-     * @return \AHT\GssiCustomily\Api\Data\GssiCustomilyInterface
+     * @param string[] $sku
+     * @return null
      */
-    public function getPriceSku(String $sku);
+    public function getPriceSku(array $sku);
+
+    /**
+     * Get Price by personalizationCode
+     * @param string[] $sku
+     * @return null
+     */
+    public function getPricePersonalizationCode(array $code);
 
 }

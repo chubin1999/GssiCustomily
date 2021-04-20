@@ -31,8 +31,14 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
-    <route url="/V1/GssiCustomilyPriceSku/:sku" method="GET">
+    <route url="/V1/GssiCustomilyPriceSku/get/" method="GET">
         <service class="AHT\GssiCustomily\Api\GssiCustomilyRepositoryInterface" method="getPriceSku"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/GssiCustomilyPriceersonalizationCode/get/" method="GET">
+        <service class="AHT\GssiCustomily\Api\GssiCustomilyRepositoryInterface" method="getPricePersonalizationCode"/>
         <resources>
             <resource ref="anonymous"/>
         </resources>
