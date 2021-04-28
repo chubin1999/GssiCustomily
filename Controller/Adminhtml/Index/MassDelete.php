@@ -1,8 +1,8 @@
 <?php
-namespace AHT\Portfolio\Controller\Adminhtml\Index;
+namespace AHT\GssiCustomily\Controller\Adminhtml\Index;
 
-use AHT\Portfolio\Model\ResourceModel\Category\CollectionFactory;
-use AHT\Portfolio\Model\CategoryFactory;
+use AHT\GssiCustomily\Model\ResourceModel\GssiCustomily\CollectionFactory;
+use AHT\GssiCustomily\Model\GssiCustomilyFactory;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Ui\Component\MassAction\Filter;
@@ -17,7 +17,7 @@ class MassDelete extends \Magento\Backend\App\Action
         Context $context,
         Filter $filter,
         CollectionFactory $collectionFactory,
-        PortfolioFactory $_postFactory
+        GssiCustomilyFactory $_postFactory
     ) {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
@@ -38,7 +38,6 @@ class MassDelete extends \Magento\Backend\App\Action
         $parameterData = $this->getRequest()->getParams('id');
 
         $selectedAppsid = $this->getRequest()->getParams('id');
-
 
         if (array_key_exists("selected", $parameterData)) {
             $selectedAppsid = $parameterData['selected'];

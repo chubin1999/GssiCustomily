@@ -76,14 +76,14 @@
                 </settings>
             </filterSelect>
         </filters>
-        <!-- <massaction name="listing_massaction">
+        <massaction name="listing_massaction">
             <action name="delete">
                 <settings>
                     <confirm>
                         <message translate="true">Are you sure you want to delete selected items?</message>
                         <title translate="true">Delete items</title>
                     </confirm>
-                    <url path="category/index/massDelete"/>
+                    <url path="gssicustomily/index/massDelete"/>
                     <type>delete</type>
                     <label translate="true">Delete</label>
                 </settings>
@@ -92,17 +92,17 @@
                 <settings>
                     <callback>
                         <target>editSelected</target>
-                        <provider>aht_category_listing.aht_category_listing.aht_category_columns_editor</provider>
+                        <provider>aht_gssicustomily_listing.aht_gssicustomily_listing.aht_gssicustomily_columns_editor</provider>
                     </callback>
                     <type>edit</type>
                     <label translate="true">Edit</label>
                 </settings>
             </action>
-        </massaction> -->
+        </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
     <columns name="aht_gssicustomily_columns">
-        <!-- <settings>
+        <settings>
             <editorConfig>
                 <param name="clientConfig" xsi:type="array">
                     <item name="saveUrl" xsi:type="url" path="gssicustomily/index/inlineEdit"/>
@@ -110,11 +110,11 @@
                 </param>
                 <param name="indexField" xsi:type="string">id</param>
                 <param name="enabled" xsi:type="boolean">true</param>
-                <param name="selectProvider" xsi:type="string">aht_category_listing.aht_category_listing.aht_category_columns.ids</param>
+                <param name="selectProvider" xsi:type="string">aht_gssicustomily_listing.aht_gssicustomily_listing.aht_gssicustomily_columns.ids</param>
             </editorConfig>
             <childDefaults>
                 <param name="fieldAction" xsi:type="array">
-                    <item name="provider" xsi:type="string">aht_category_listing_.aht_category_listing.aht_category_columns_editor</item>
+                    <item name="provider" xsi:type="string">aht_gssicustomily_listing_.aht_gssicustomily_listing.aht_gssicustomily_columns_editor</item>
                     <item name="target" xsi:type="string">startEdit</item>
                     <item name="params" xsi:type="array">
                         <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
@@ -122,7 +122,7 @@
                     </item>
                 </param>
             </childDefaults>
-        </settings> -->
+        </settings>
         <selectionsColumn name="ids">
             <settings>
                 <indexField>id</indexField>

@@ -145,6 +145,9 @@ class GssiCustomilyRepository implements GssiCustomilyRepositoryInterface
     public function getPriceSku(array $sku)
     {
         $this->_price = $sku;
+        /*echo "<pre>";
+        print_r($this->_price);
+        die();*/
         $collection = $this->postCollectionFactory->create();
 
         $this->_collection = $collection;

@@ -21,4 +21,11 @@
     <preference for="AHT\GssiCustomily\Api\GssiCustomilyRepositoryInterface" type="AHT\GssiCustomily\Model\GssiCustomilyRepository" />
     <preference for="AHT\GssiCustomily\Api\Data\GssiCustomilyInterface" type="AHT\GssiCustomily\Model\GssiCustomily"/>
 
+    <type name="Magento\ImportExport\Model\Import\SampleFileProvider">
+        <arguments>
+            <argument name="samples" xsi:type="array">
+                <item name="aht_gssicustomily" xsi:type="string">AHT_GssiCustomily</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

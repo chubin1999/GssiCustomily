@@ -1,6 +1,6 @@
 <?php
 
-namespace AHT\Portfolio\Controller\Adminhtml\Category;
+namespace AHT\GssiCustomily\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
@@ -40,7 +40,7 @@ class InlineEdit extends \Magento\Backend\App\Action
                 $error = true;
             } else {
                 foreach (array_keys($postItems) as $bannerId) {
-                    $model = $this->_objectManager->create('AHT\Portfolio\Model\Category');
+                    $model = $this->_objectManager->create('AHT\GssiCustomily\Model\GssiCustomily');
                     $model->load($bannerId);
                     try {
                         $model->setData(array_merge($model->getData(), $postItems[$bannerId]));

@@ -20,17 +20,21 @@ class Data
 	public function getPriceSkuPersonalizationCodeQty(array $array)
     {
         $this->_price = $array;
+
+        /*echo "<pre>";
+        var_dump($this->_price = $array);
+        die();*/
         $collection = $this->collectionFactory->create();
 
         $this->_collection = $collection;
-        $this->toFilterLike('sku');
-        $this->toFilterLike('personalizationcode');
-        $this->toFilterLike('qty');
+        $this->toFilterEq('sku');
+        $this->toFilterEq('personalizationcode');
+        $this->toFilterEq('qty');
 
         foreach ($collection as $key => $value) {
             $price = $value->getPrice();
-            echo "<pre>";
-            var_dump($price);
+            /*echo "<pre>";
+            var_dump($price);*/
         }
         // echo "<pre>";
         // var_dump($price);
@@ -39,8 +43,17 @@ class Data
 
     public function toFilterLike(String $field)
     {
+        /*echo "<pre>";
+        var_dump($this->_price[$field]);
+        die();*/
         if (isset($this->_price[$field])) {
             $this->_collection->addFieldToFilter($field, ['like' => '%' . $this->_price[$field] . '%']);
+        }
+    }
+    public function toFilterEq(String $field)
+    {
+        if (isset($this->_price[$field])) {
+            $this->_collection->addFieldToFilter($field, ['eq' => $this->_price[$field]]);
         }
     }
 }

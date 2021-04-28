@@ -96,10 +96,8 @@
                     <item name="dataScope" xsi:type="string">qty</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
-                        <item name="validate-number" xsi:type="boolean">true</item>
-                        <item name="validate-number-range" xsi:type="boolean">true</item>
-                        <item name="validate-per-page-value" xsi:type="boolean">1</item>
-                        <!-- <item name="stripped-min-length" xsi:type="boolean">true</item> -->      
+                        <item name="validate-digits" xsi:type="boolean">true</item>
+                        <item name="validate-greater-than-zero" xsi:type="boolean">true</item>  
                     </item>
                 </item>
             </argument>
@@ -115,6 +113,8 @@
                     <item name="dataScope" xsi:type="string">price</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
+                        <item name="validate-zero-or-greater" xsi:type="boolean">true</item>
                     </item>
                 </item>
             </argument>

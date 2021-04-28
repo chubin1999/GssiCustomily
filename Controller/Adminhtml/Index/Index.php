@@ -23,10 +23,10 @@ class Index extends \Magento\Backend\App\Action
 
     public function execute()
     {
-        $a = $this->getPrice->getPriceSkuPersonalizationCodeQty(['sad','code','2']);
-        echo "<pre>";
-        var_dump($a);
-        die();
+       /* $a = $this->getPrice->getPriceSkuPersonalizationCodeQty(['sku'=>'sad','personalizationcode'=>'code','qty'=>'2']);*/
+        /*echo "<pre>";
+        print_r($a);
+        die();*/
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('AHT_GssiCustomily:gssicustomily');
         $resultPage->addBreadcrumb(__('GssiCustomily'), __('GssiCustomily'));
