@@ -21,11 +21,8 @@ class Data
     {
         $this->_price = $array;
 
-        /*echo "<pre>";
-        var_dump($this->_price = $array);
-        die();*/
         $collection = $this->collectionFactory->create();
-
+        
         $this->_collection = $collection;
         $this->toFilterEq('sku');
         $this->toFilterEq('personalizationcode');
@@ -33,19 +30,12 @@ class Data
 
         foreach ($collection as $key => $value) {
             $price = $value->getPrice();
-            /*echo "<pre>";
-            var_dump($price);*/
         }
-        // echo "<pre>";
-        // var_dump($price);
         return $price;
     }
 
     public function toFilterLike(String $field)
     {
-        /*echo "<pre>";
-        var_dump($this->_price[$field]);
-        die();*/
         if (isset($this->_price[$field])) {
             $this->_collection->addFieldToFilter($field, ['like' => '%' . $this->_price[$field] . '%']);
         }
